@@ -1,0 +1,110 @@
+<div style="text-align: center; display: block">
+  <img src="assets/images/logo-empresa.png" style="max-height: 10rem" />
+</div>
+<div class="registro">
+  <h2>Editar Usuario</h2>
+  <form #signUpForm="ngForm" (ngSubmit)="editarUsuario()">
+    <mat-form-field>
+      <mat-label>Nombres:</mat-label>
+      <input
+        [(ngModel)]="usuario.nombres"
+        matInput
+        placeholder="Ingrese nombres"
+        name="nombres"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellidos:</mat-label>
+      <input
+        [(ngModel)]="usuario.apellidos"
+        matInput
+        placeholder="Ingrese apellidos"
+        name="apellidos"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email:</mat-label>
+      <input
+        [(ngModel)]="usuario.email"
+        email
+        matInput
+        placeholder="Ingrese correo electronico"
+        name="email"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Celular:</mat-label>
+      <input
+        [(ngModel)]="usuario.celular"
+        type="tel"
+        pattern="^[3][0-9]{9}$"
+        matInput
+        placeholder="Ingrese numero celular"
+        name="celular"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contraseña:</mat-label>
+      <input
+        [(ngModel)]="usuario.password"
+        type="password"
+        matInput
+        placeholder="Ingrese contraseña"
+        name="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Confirmar Contraseña:</mat-label>
+      <input
+        ngModel
+        type="password"
+        matInput
+        placeholder="Ingrese contraseña"
+        name="confirm"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Saldo:</mat-label>
+      <input
+        [(ngModel)]="usuario.saldo"
+        type="number"
+        matInput
+        placeholder="Ingrese saldo disponible"
+        name="saldo"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo Usuario:</mat-label>
+      <select
+        name="tipo_usuario"
+        [(ngModel)]="usuario.tipo_usuario"
+        matNativeControl
+        required
+      >
+        <option value="">Seleccione una opción</option>
+        <option value="usuario">Usuario final</option>
+        <option value="revendedor">Revendedor</option>
+        <option value="admin">Administrador</option>
+      </select>
+    </mat-form-field>
+    <button
+      *ngIf="!loginInProgress"
+      mat-raised-button
+      color="warn"
+      type="submit"
+      [disabled]="!signUpForm.form.valid"
+    >
+      Actualizar
+    </button>
+  </form>
+</div>
+<img
+  *ngIf="loginInProgress"
+  src="../../assets/images/loading.gif"
+  style="margin: auto; display: block"
+/>

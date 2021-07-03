@@ -1,0 +1,32 @@
+<div style="text-align: center; display: block;">
+  <img src="assets/images/logo-empresa.png" style="max-height: 10rem;"/>
+</div>
+<mat-card class="login">
+  <mat-card-content>
+    <mat-card-title>Iniciar Sesión</mat-card-title>
+    <form
+      class="example-form"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit(loginForm.value)"
+    >
+      <mat-form-field>
+        <input type="email"
+          matInput
+          placeholder="Email"
+          formControlName="email"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="Contraseña"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <button *ngIf="!loginInProgress" mat-raised-button color="primary" type="submit">Ingresar</button>
+      <a mat-raised-button color="accent" [routerLink]="['/registrarse']">Registrarse</a>
+    </form>
+  </mat-card-content>
+</mat-card>
+<img *ngIf="loginInProgress" src="../../assets/images/loading.gif" style="margin: auto;display: block;"/>

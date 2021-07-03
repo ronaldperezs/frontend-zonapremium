@@ -1,0 +1,27 @@
+<h2>Editar Suscripción</h2>
+<form #editarSuscripcionForm="ngForm" (ngSubmit)="editarSuscripcion()">
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione Plan</mat-label>
+    <select matNativeControl [(ngModel)]="suscripcion.plan_id" name="plan_id" required>
+      <option value="">Seleccione opción</option>
+      <option *ngFor="let plan of planes" [value]="plan.id">
+        {{ plan.nombre }}
+      </option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email suscripción:</mat-label>
+    <input [(ngModel)]="suscripcion.email" matInput placeholder="Ingrese correo electronico" name="email" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese contraseña suscripción</mat-label>
+    <input [(ngModel)]="suscripcion.password" matInput [type]="hide ? 'password' : 'text'" name="password">
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!editarSuscripcionForm.form.valid">
+    Actualizar
+  </button>
+</form>

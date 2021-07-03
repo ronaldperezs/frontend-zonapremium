@@ -1,0 +1,74 @@
+<h2>Comprar Suscripción</h2>
+<form ngNoForm [formGroup]="form" [action]="url" method="POST">
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione Plataforma</mat-label>
+    <mat-select name="plataforma_id" (selectionChange)="onChangePlataforma($event)">
+      <mat-option *ngFor="let plataforma of plataformas" [value]="plataforma.id">
+        {{ plataforma.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione Plan</mat-label>
+    <mat-select formControlName="plan_id" name="plan_id" (selectionChange)="onChangePlan($event)">
+      <option value="">Seleccione opción</option>
+      <mat-option *ngFor="let plan of planes" [value]="plan.id">
+        {{ plan.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-error *ngIf="form.controls['plan_id'].errors?.noDisponible">Plan no disponible en este momento.</mat-error>
+  <div *ngIf="form.valid">
+    <h3>Caracteristicas plan:</h3>
+    <mat-form-field>
+      <mat-label>Nombre:</mat-label>
+      <input [(value)]="plan.nombre" matInput readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Duración:</mat-label>
+      <input type="number" [(value)]="plan.duracion" matInput readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Calidad:</mat-label>
+      <input [(value)]="plan.calidad" matInput readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cuenta:</mat-label>
+      <input [(value)]="plan.tipo_cuenta" matInput readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripción:</mat-label>
+      <input [(value)]="plan.descripcion" matInput readonly />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio:</mat-label>
+      <input type="number" [(value)]="plan.precio" matInput readonly />
+    </mat-form-field>
+    <div *ngIf="precio_revendedor!=0 && plan.precio!=precio_revendedor">
+      <mat-form-field>
+        <mat-label>Precio revendedor:</mat-label>
+        <input type="number" [value]="precio_revendedor" matInput readonly />
+      </mat-form-field>
+    </div>
+    <input name="merchantId" type="hidden" [value]="solicitudPago.merchantId">
+    <input name="accountId" type="hidden" [value]="solicitudPago.accountId">
+    <input name="description" type="hidden" [value]="solicitudPago.description">
+    <input name="referenceCode" type="hidden" [value]="solicitudPago.referenceCode">
+    <input name="amount" type="hidden" [value]="solicitudPago.amount">
+    <input name="tax" type="hidden" [value]="solicitudPago.tax">
+    <input name="taxReturnBase" type="hidden" [value]="solicitudPago.taxReturnBase">
+    <input name="currency" type="hidden" [value]="solicitudPago.currency">
+    <input name="signature" type="hidden" [value]="solicitudPago.signature">
+    <input name="test" type="hidden" [value]="solicitudPago.test">
+    <input name="buyerEmail" type="hidden" [value]="solicitudPago.buyerEmail">
+    <input name="responseUrl" type="hidden" [value]="solicitudPago.responseUrl">
+    <input name="confirmationUrl" type="hidden" [value]="solicitudPago.confirmationUrl">
+    <button mat-raised-button color="primary" type="submit" onclick="submit()" [disabled]="noDisponible">
+      Compra Online
+    </button>
+    <button mat-raised-button color="accent" type="button" (click)="comprarConSaldo()" [disabled]="noDisponible">
+      Comprar con Saldo
+    </button>
+  </div>
+
+</form>

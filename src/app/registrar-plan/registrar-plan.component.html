@@ -1,0 +1,88 @@
+<h2>Registrar Plan</h2>
+<div class="registro">
+  <form
+    #registrarPlanForm="ngForm"
+    (ngSubmit)="registrarPlan(registrarPlanForm)"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione Plataforma</mat-label>
+      <mat-select ngModel name="plataforma_id">
+        <mat-option
+          *ngFor="let plataforma of plataformas"
+          [value]="plataforma.id"
+        >
+          {{ plataforma.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nombre:</mat-label>
+      <input ngModel matInput placeholder="Ingrese nombre plan" name="nombre" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Duración:</mat-label>
+      <input
+        type="number"
+        ngModel
+        matInput
+        placeholder="Ingrese numero duración en días"
+        name="duracion"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Calidad:</mat-label>
+      <input
+        ngModel
+        matInput
+        placeholder="Ingrese calidad imagen"
+        name="calidad"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cuenta:</mat-label>
+      <input
+        ngModel
+        matInput
+        placeholder="Ingrese descripción del tipo de cuenta"
+        name="tipo_cuenta"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripción:</mat-label>
+      <input
+        ngModel
+        matInput
+        placeholder="Ingrese descripción general del plan"
+        name="descripcion"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio:</mat-label>
+      <input
+        type="number"
+        ngModel
+        matInput
+        placeholder="Ingrese precio"
+        name="precio"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio revendedor:</mat-label>
+      <input
+        type="number"
+        ngModel
+        matInput
+        placeholder="Ingrese precio revendedor"
+        name="precio_revendedor"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!registrarPlanForm.form.valid"
+    >
+      Regístrar
+    </button>
+  </form>
+</div>

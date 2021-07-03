@@ -1,0 +1,39 @@
+<h2>Registrar Suscripción</h2>
+<form
+  #registrarSuscripcionForm="ngForm"
+  (ngSubmit)="registrarSuscripcion(registrarSuscripcionForm)"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione Plan</mat-label>
+    <select matNativeControl ngModel name="plan_id" required>
+      <option value="">Seleccione opción</option>
+      <option *ngFor="let plan of planes" [value]="plan.id">
+        {{ plan.nombre }}
+      </option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email suscripción:</mat-label>
+    <input
+      ngModel
+      matInput
+      placeholder="Ingrese correo electronico"
+      name="email"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input ngModel matInput [type]="hide ? 'password' : 'text'" name="password">
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!registrarSuscripcionForm.form.valid"
+  >
+    Regístrar
+  </button>
+</form>

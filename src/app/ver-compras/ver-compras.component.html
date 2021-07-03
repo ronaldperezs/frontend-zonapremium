@@ -1,0 +1,38 @@
+<h2>Detalles Suscripción</h2>
+<mat-form-field>
+  <mat-label>Email suscripción:</mat-label>
+  <input [(ngModel)]="suscripcion.email" matInput placeholder="Ingrese correo electronico" name="email" readonly />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Contraseña suscripción:</mat-label>
+  <input [(ngModel)]="suscripcion.password" matInput [type]="hide ? 'text' : 'password'" />
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+    [attr.aria-pressed]="hide">
+    <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+  </button>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Fecha Compra:</mat-label>
+  <input [(value)]="suscripcion.fecha_compra" matInput readonly />
+</mat-form-field>
+<h3>Caracteristicas plan:</h3>
+<mat-form-field>
+  <mat-label>Nombre:</mat-label>
+  <input [(value)]="plan.nombre" matInput readonly />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Duración (días):</mat-label>
+  <input type="number" [(value)]="plan.duracion" matInput readonly />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Calidad:</mat-label>
+  <input [(value)]="plan.calidad" matInput readonly />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Cuenta:</mat-label>
+  <input [(value)]="plan.tipo_cuenta" matInput readonly />
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Descripción:</mat-label>
+  <input [(value)]="plan.descripcion" matInput readonly />
+</mat-form-field>

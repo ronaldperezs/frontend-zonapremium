@@ -1,0 +1,36 @@
+<h2>Mis Compras</h2>
+
+<h3>Saldo: $ {{saldo}}</h3>
+
+<button mat-raised-button color="primary" [routerLink]="['registrar']">
+  Comprar Suscripción
+</button>
+
+<table mat-table [dataSource]="suscripciones" class="mat-elevation-z8">
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email Cuenta</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+  <ng-container matColumnDef="fecha_compra">
+    <th mat-header-cell *matHeaderCellDef>Fecha Compra</th>
+    <td mat-cell *matCellDef="let element">{{ element.fecha_compra }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let element">
+       <button mat-raised-button color="accent" routerLink="{{ element.id }}">
+        Ver detalles
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+>
+</mat-paginator>

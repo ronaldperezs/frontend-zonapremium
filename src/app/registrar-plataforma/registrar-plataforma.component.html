@@ -1,0 +1,23 @@
+<h2>Registrar Plataforma</h2>
+<form
+  #registrarPlataformaForm="ngForm"
+  (ngSubmit)="registrarPlataforma(registrarPlataformaForm)"
+>
+  <mat-form-field>
+    <mat-label>Nombre:</mat-label>
+    <input
+      ngModel
+      matInput
+      placeholder="Ingrese nombre plataforma"
+      name="nombre"
+    />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!registrarPlataformaForm.form.valid"
+  >
+    Regístrar
+  </button>
+</form>

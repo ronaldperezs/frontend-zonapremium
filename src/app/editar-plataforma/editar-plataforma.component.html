@@ -1,0 +1,24 @@
+<h2>Editar Plataforma</h2>
+<form
+  #editarPlataformaForm="ngForm"
+  (ngSubmit)="editar()"
+>
+  <mat-form-field>
+    <mat-label>Nombre:</mat-label>
+    <input
+      [(ngModel)] = plataforma.nombre
+      matInput
+      placeholder="Ingrese nombre plataforma"
+      name="nombre"
+      required
+    />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!editarPlataformaForm.form.valid"
+  >
+    Actualizar
+  </button>
+</form>
