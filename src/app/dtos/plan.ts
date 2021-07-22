@@ -7,5 +7,6 @@ export interface Plan {
   descripcion: String;
   precio: Number;
   precio_revendedor?: Number;
+  precio_distribuidor?: Number;
   plataforma_id: Number;
 }

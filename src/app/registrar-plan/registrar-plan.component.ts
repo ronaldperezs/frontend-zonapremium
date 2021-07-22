@@ -40,6 +40,7 @@ export class RegistrarPlanComponent implements OnInit {
       duracion: form.value.duracion,
       precio: form.value.precio,
       precio_revendedor: form.value.precio_revendedor,
+      precio_distribuidor: form.value.precio_distribuidor,
       plataforma_id: form.value.plataforma_id,
     };
     this.planformaService.registrar(plan).subscribe(
